@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url';
@@ -130,8 +133,8 @@ if (process.env.MODE === 'cluster' && cluster.isPrimary) {
         res.status(500).send('Something broke!');
     })
     
-    const server = app.listen(process.env.PORT, () => {
-        logger.info(`Server running in http://railways-deploy-proyectofinal3-production.up.railway.app in PORT ${process.env.PORT} from process ${process.pid}`);
+    const server = app.listen(PORT, () => {
+        logger.info(`Server running in http://railways-deploy-proyectofinal3-production.up.railway.app in PORT ${PORT} from process ${process.pid}`);
         logger.info(`Environment: ${process.env.ENV}`);
         logger.info(`Persistence type: ${process.env.PERSISTENCE_TYPE ? process.env.PERSISTENCE_TYPE : "Memoria"}`);
         logger.info(`Mode: ${process.env.MODE ? process.env.MODE : "Fork"}`);
