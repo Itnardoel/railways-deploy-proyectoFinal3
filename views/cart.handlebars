@@ -6,10 +6,10 @@
 <div class="container">
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
-        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="/api/productos/" class="nav-link">Productos</a></li>
+        <li class="nav-item"><a href="https://railways-deploy-proyectofinal3-production.up.railway.app/" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="https://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/" class="nav-link">Productos</a></li>
         <li class="nav-item"><a id="cart-link" href="#" class="nav-link active" aria-current="page">Carrito</a></li>
-        <li class="nav-item"><a href="/api/profile" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="https://railways-deploy-proyectofinal3-production.up.railway.app/api/profile" class="nav-link">Profile</a></li>
         </ul>
     </header>
 </div>
@@ -26,7 +26,7 @@
 </div>
 
 <div>
-    <form id="to-buy" class="d-flex flex-column ms-3 me-3" action="/api/compra" method="get">
+    <form id="to-buy" class="d-flex flex-column ms-3 me-3" action="https://railways-deploy-proyectofinal3-production.up.railway.app/api/compra" method="get">
         <button type="submit" id="buy-boton" class="d-grid col-4 mb-3 btn btn-warning">Finalizar compra</button>
     </form>
 </div>
@@ -35,26 +35,26 @@
 <script>
     //Si estoy logueado, lo renderizo, sino redirijo al login
     (function () {
-        fetch(`/api`)
+        fetch(`https://railways-deploy-proyectofinal3-production.up.railway.app/api`)
         .then(res => res.json())
         .then(data => {
             const span = document.createElement('span');
             span.innerText = ` ${data.email}`
             usuario.appendChild(span);
 
-            const myURL = `/api/carrito/${data.cart}/productos`;
+            const myURL = `https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${data.cart}/productos`;
             document.getElementById('cart-link').href = myURL;
         })
         .catch(error => {
             console.log(error.message);
-            location.href = '/api/login'
+            location.href = 'https://railways-deploy-proyectofinal3-production.up.railway.app/api/login'
         });
     })();
 
     const logout = document.getElementById('logout-boton');
 
     logout.addEventListener('click', () => {
-        location.href = '/api/sign-out'
+        location.href = 'https://railways-deploy-proyectofinal3-production.up.railway.app/api/sign-out'
     })
 
     const btnEliminar = document.getElementsByClassName('boton-eliminar');
@@ -66,10 +66,10 @@
     async function deleteProduct(event) {
         let idProducto = event.target.getAttribute("data-id"); //obtengo el id del producto
 
-        const response = await fetch(`/api`);
+        const response = await fetch(`https://railways-deploy-proyectofinal3-production.up.railway.app/api`);
         const data = await response.json();
 
-        fetch(`/api/carrito/${data.cart}/productos/${idProducto}`, {method: 'DELETE'})
+        fetch(`https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${data.cart}/productos/${idProducto}`, {method: 'DELETE'})
             .then (response => {
                 console.log(response);
                 const element = document.getElementById(idProducto);

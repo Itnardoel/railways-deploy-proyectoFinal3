@@ -30,7 +30,7 @@ router.delete('/:id', async (req, res) => {
     } else (
         res.status(404).json({
             error: -2,
-            descripcion: `ruta http://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${req.params.id} metodo DELETE no implementada` // 404 NOT FOUND
+            descripcion: `ruta https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${req.params.id} metodo DELETE no implementada` // 404 NOT FOUND
          })
     )
 })
@@ -51,7 +51,7 @@ router.get('/:id/productos', async (req, res) => {
     } else {
         res.status(404).json({
             error: -2,
-            descripcion: `ruta http://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${req.params.id}/productos metodo GET no implementada` // 404 NOT FOUND
+            descripcion: `ruta https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${req.params.id}/productos metodo GET no implementada` // 404 NOT FOUND
          })
     }
 })
@@ -66,7 +66,7 @@ router.post('/:id/productos', async (req, res) => {
     } else (
         res.status(404).json({
             error: -2,
-            descripcion: `ruta http://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${req.params.id}/productos metodo POST no implementada` // 404 NOT FOUND
+            descripcion: `ruta https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${req.params.id}/productos metodo POST no implementada` // 404 NOT FOUND
          })
     )
 })
@@ -80,7 +80,7 @@ router.delete('/:id/productos/:id_prod', async (req, res) => {
     if (carrito == 0) {
         res.status(404).json({
             error: -2,
-            descripcion: `ruta http://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${req.params.id}/productos/${req.params.id_prod} metodo DELETE no implementada` // 404 NOT FOUND
+            descripcion: `ruta https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${req.params.id}/productos/${req.params.id_prod} metodo DELETE no implementada` // 404 NOT FOUND
          })
     } else {
         res.status(204).end();

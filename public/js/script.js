@@ -28,7 +28,7 @@
 
     //Si estoy logueado, lo renderizo, sino redirijo al login
     (function () {
-        fetch(`/api`)
+        fetch(`https://railways-deploy-proyectofinal3-production.up.railway.app/api`)
         .then(res => res.json())
         .then(data => {
             // console.log(data)
@@ -37,23 +37,23 @@
             span.innerText = ` ${data.email}`
             usuario.appendChild(span);
 
-            const myURL = `/api/carrito/${data.cart}/productos`;
+            const myURL = `https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${data.cart}/productos`;
             document.getElementById('cart-link').href = myURL;
 
             return obj;
         })
         .catch(error => {
             console.log(error.message);
-            location.href = '/api/login'
+            location.href = 'https://railways-deploy-proyectofinal3-production.up.railway.app/api/login'
         });
     })();
 
     logout.addEventListener('click', () => {
-        location.href = '/api/sign-out'
+        location.href = 'https://railways-deploy-proyectofinal3-production.up.railway.app/api/sign-out'
     })
 
     // Consigo los elementos de mi backend, los sumo al array de productos y los renderizo
-    fetch('/api/productos/admin')
+    fetch('https://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/admin')
         .then(response => response.json())
         .then(data => {
             
@@ -114,7 +114,7 @@
     }
 
     function createCart() {
-        fetch(`/api/carrito/`, {
+        fetch(`https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -129,7 +129,7 @@
     function deleteProduct(event) {
         let idProducto = event.target.getAttribute("data-id"); //obtengo el id del producto
 
-        fetch(`/api/productos/${idProducto}`, {method: 'DELETE'})
+        fetch(`https://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/${idProducto}`, {method: 'DELETE'})
             .then (response => {
                 console.log(response);
                 const element = document.getElementById(idProducto);
@@ -151,7 +151,7 @@
             stock: stock.value,
         }
 
-        fetch(`/api/productos/${idProducto}`, {
+        fetch(`https://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/${idProducto}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -177,7 +177,7 @@
     function showCartById(event) {
         event.preventDefault();
 
-        fetch(`/api/carrito/${inputCart.value}/productos`)
+        fetch(`https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${inputCart.value}/productos`)
         .then(response => response.json())
         .then(data => {
             // Elimino el render anterior para evitar un re render
@@ -203,7 +203,7 @@
         let idProducto = event.target.getAttribute("data-id"); //obtengo el id del producto
         let busqueda = products.find((producto) => producto.id == idProducto); //busco el id en el array de productos
         
-        fetch(`/api/carrito/${inputCart.value}/productos`, {
+        fetch(`https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${inputCart.value}/productos`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

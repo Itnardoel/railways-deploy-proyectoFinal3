@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
     } else {
         res.status(404).json({
             error: -2,
-            descripcion: `ruta http://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/${req.params.id} metodo GET no implementada` // 404 NOT FOUND
+            descripcion: `ruta https://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/${req.params.id} metodo GET no implementada` // 404 NOT FOUND
          })
     }
 })
@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
     } else {
         res.status(403).json({
             error: -1,
-            descripcion: 'ruta http://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/ metodo POST no autorizada ' // 403 FORBIDDEN
+            descripcion: 'ruta https://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/ metodo POST no autorizada ' // 403 FORBIDDEN
         })
     }
 })
@@ -61,13 +61,13 @@ router.put('/:id', async (req, res) => {
         } else (
             res.status(404).json({
                 error: -2,
-                descripcion: `ruta http://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/${req.params.id} metodo PUT no implementada` // 404 NOT FOUND
+                descripcion: `ruta https://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/${req.params.id} metodo PUT no implementada` // 404 NOT FOUND
              })
         )
     } else {
         res.status(403).json({
             error: -1,
-            descripcion: 'ruta http://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/ metodo PUT no autorizada ' // 403 FORBIDDEN
+            descripcion: 'ruta https://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/ metodo PUT no autorizada ' // 403 FORBIDDEN
         })
     }
 })
@@ -82,13 +82,13 @@ router.delete('/:id', async (req, res) => {
         } else (
             res.status(404).json({
                 error: -2,
-                descripcion: `ruta http://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/${req.params.id} metodo DELETE no implementada` // 404 NOT FOUND
+                descripcion: `ruta https://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/${req.params.id} metodo DELETE no implementada` // 404 NOT FOUND
              })
         )
     } else {
         res.status(403).json({
             error: -1,
-            descripcion: 'ruta http://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/ metodo DELETE no autorizada ' // 403 FORBIDDEN
+            descripcion: 'ruta https://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/ metodo DELETE no autorizada ' // 403 FORBIDDEN
         })
     }
 })
