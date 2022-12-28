@@ -28,7 +28,7 @@
 
     //Si estoy logueado, lo renderizo, sino redirijo al login
     (function () {
-        fetch(`http://railways-deploy-proyectofinal3-production.up.railway.app/api`)
+        fetch(`/api`)
         .then(res => res.json())
         .then(data => {
             // console.log(data)
