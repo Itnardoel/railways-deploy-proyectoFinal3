@@ -9,7 +9,7 @@ export default async function sendWhatsapp(message, target) {
     
     const opts = { 
         body: message,
-        from: `whatsapp:+14155238886`,
+        from: `whatsapp:${process.env.TWILIO_PHONE_NUMBER}`,
         to: `whatsapp:${target}` 
     }
 
