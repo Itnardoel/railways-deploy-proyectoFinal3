@@ -6,10 +6,10 @@
 <div class="container">
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
-        <li class="nav-item"><a href="http://localhost:8080/" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="http://localhost:8080/api/productos/" class="nav-link">Productos</a></li>
+        <li class="nav-item"><a href="http://railways-deploy-proyectofinal3-production.up.railway.app/" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="http://railways-deploy-proyectofinal3-production.up.railway.app/api/productos/" class="nav-link">Productos</a></li>
         <li class="nav-item"><a id="cart-link" href="#" class="nav-link">Carrito</a></li>
-        <li class="nav-item"><a href="http://localhost:8080/api/profile" class="nav-link active" aria-current="page">Profile</a></li>
+        <li class="nav-item"><a href="http://railways-deploy-proyectofinal3-production.up.railway.app/api/profile" class="nav-link active" aria-current="page">Profile</a></li>
         </ul>
     </header>
 </div>
@@ -26,7 +26,7 @@
 <script>
     //Si estoy logueado, lo renderizo, sino redirijo al login
     (function () {
-        fetch(`http://localhost:8080/api`)
+        fetch(`http://railways-deploy-proyectofinal3-production.up.railway.app/api`)
         .then(res => res.json())
         .then(data => {
             // console.log(data)
@@ -35,18 +35,18 @@
             span.innerText = ` ${data.email}`
             usuario.appendChild(span);
 
-            const myURL = `http://localhost:8080/api/carrito/${data.cart}/productos`;
+            const myURL = `http://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${data.cart}/productos`;
             document.getElementById('cart-link').href = myURL;
         })
         .catch(error => {
             console.log(error.message);
-            location.href = 'http://localhost:8080/api/login'
+            location.href = 'http://railways-deploy-proyectofinal3-production.up.railway.app/api/login'
         });
     })();
 
     const logout = document.getElementById('logout-boton');
 
     logout.addEventListener('click', () => {
-        location.href = 'http://localhost:8080/api/sign-out'
+        location.href = 'http://railways-deploy-proyectofinal3-production.up.railway.app/api/sign-out'
     })
 </script>
