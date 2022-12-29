@@ -93,7 +93,6 @@
                                 ${data.nombre}
                             </header>
                             <img src=${data.foto} alt=""> <p>Precio: ${data.precio}</p>
-                            <button class="boton-agregar" data-id=${data.id}>Agregar</button>
                             ${administrador ? `<footer> <button class="boton-actualizar" data-id=${data.id}>Actualizar</button> <button class="boton-eliminar" data-id=${data.id}>Eliminar</button> </footer>` : ''}
                             `;
         cards.appendChild(article);
