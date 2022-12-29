@@ -9,7 +9,7 @@
 
     const btnEliminar = document.getElementsByClassName('boton-eliminar');
     const btnActualizar = document.getElementsByClassName('boton-actualizar');
-    const btnAgregar = document.getElementsByClassName('boton-agregar');
+    
     const btnCarrito = document.getElementById('btn-carrito');
     const btnCreateCarrito = document.getElementById("create-carrito");
 
@@ -79,10 +79,6 @@
 
             for (const btn of btnActualizar) {
                 btn.addEventListener('click', updateProduct);
-            }
-
-            for (const btn of btnAgregar) {
-                btn.addEventListener('click', addProduct);
             }
         })
 
@@ -197,23 +193,5 @@
         })
         .catch(error => console.log(error))
         
-    }
-
-    function addProduct(event) {
-        let idProducto = event.target.getAttribute("data-id"); //obtengo el id del producto
-        let busqueda = products.find((producto) => producto.id == idProducto); //busco el id en el array de productos
-        
-        fetch(`https://railways-deploy-proyectofinal3-production.up.railway.app/api/carrito/${inputCart.value}/productos`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(busqueda),
-        })
-            .then(response => {
-                console.log(response)
-                showCartById(event);
-            })
-            .catch(error => console.log(error))
     }
 })();
