@@ -2,23 +2,28 @@ import nodemailer from 'nodemailer'
 
 import logger from './logger.js'
 
-const email = process.env.NODEMAILER_MAIL_TARGET;
+const email = process.env.NODEMAILER_TRANSPORT_MAIL;
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-        user: 'kailey.terry@ethereal.email',
-        pass: 'BdDp5aRbzff3kvQNFw'
-    },
-})
+        user: process.env.NODEMAILER_TRANSPORT_MAIL,
+        pass: process.env.NODEMAILER_TRANSPORT_PASS
+    }
+});
 
-export default async function sendMail(subject, body) {
+export default async function sendMail(to, subject, body) {
     const opts = {
         from: 'Backend 32120',
-        to: email,
-        subject,
-        html: body
+        to: to,
+        subject, 
+        html: `<h1> Nueva Orden </h1>
+                <p> ${body.map((element) => element.nombre + ' ' + 'x' + ' ' + element.cantidad + ' ' + '$' + (element.precio * element.cantidad).toFixed(2)).join("</p><p>")} </p>
+                <br>
+                <p> Gracias por tu compra </p>
+                <p> Backend 32120 </p>
+            `
     }
     
     try {
