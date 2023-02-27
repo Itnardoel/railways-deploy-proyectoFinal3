@@ -1,4 +1,4 @@
-# Desafio 18
+# Proyecto Final
 Este es un servicio backend que permite el **manejo de productos** y **manejo de carritos**. Permite `crear`, `obtener`, `actualizar` y `eliminar` los mismos.
 Posee un manejo de mensajes a traves de websocket.
 Autenticacion a traves de passport con JWT.

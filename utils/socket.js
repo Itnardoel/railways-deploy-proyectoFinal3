@@ -8,7 +8,7 @@ let messages = [];
 
 (async function () {
     try {
-        const response = await fetch('/chat')
+        const response = await fetch('https://railways-deploy-proyectofinal3-production.up.railway.app/chat')
         const historyMessages = await response.json();
         
         if (historyMessages.length == 0) {
@@ -54,7 +54,7 @@ async function saveNewMessage (data) {
         body: JSON.stringify(data)
     }
 
-    await fetch('/chat', requestOptions );
+    await fetch('https://railways-deploy-proyectofinal3-production.up.railway.app/chat', requestOptions );
 }
 
 export {
