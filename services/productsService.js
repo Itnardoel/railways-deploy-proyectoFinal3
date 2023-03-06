@@ -1,6 +1,6 @@
-import ProductRepository from '../models/repositories/productsRepository.js';
-import Product from '../models/productModel.js';
-import ProductDto from '../models/dto/productsDto.js';
+import ProductRepository from "../models/repositories/productsRepository.js";
+import Product from "../models/productModel.js";
+import ProductDto from "../models/dto/productsDto.js";
 
 const repository = new ProductRepository();
 

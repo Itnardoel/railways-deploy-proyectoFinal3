@@ -1,7 +1,7 @@
-import config from '../../config/config.js';
-import MessagesMemDao from './messagesMemDao.js';
-import MessagesFileDao from './messagesFileDao.js';
-import MessagesMongoDao from './messagesMongoDao.js';
+import config from "../../config/config.js";
+import MessagesMemDao from "./messagesMemDao.js";
+import MessagesFileDao from "./messagesFileDao.js";
+import MessagesMongoDao from "./messagesMongoDao.js";
 
 class ProductsDaoFactory {
   static getProductsDao() {
@@ -9,7 +9,7 @@ class ProductsDaoFactory {
       case "file":
         return MessagesFileDao.getInstance();
       case "mongo":
-      return MessagesMongoDao.getInstance();
+        return MessagesMongoDao.getInstance();
       default:
         return MessagesMemDao.getInstance();
     }

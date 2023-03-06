@@ -3,8 +3,8 @@ import fs from "fs";
 
 import config from "../../config/config.js";
 import { NotFoundError } from "../errors/customError.js";
-import MessagesDao from './messagesDao.js';
-import MessageDto from '../dto/messagesDto.js';
+import MessagesDao from "./messagesDao.js";
+import MessageDto from "../dto/messagesDto.js";
 
 let messagesInstance = null; // Singleton
 

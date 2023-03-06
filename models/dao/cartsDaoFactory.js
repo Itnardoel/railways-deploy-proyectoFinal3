@@ -1,7 +1,7 @@
-import config from '../../config/config.js';
-import CartsMemDao from './cartsMemDao.js';
-import CartsFileDao from './cartsFileDao.js';
-import CartsMongoDao from './cartsMongoDao.js';
+import config from "../../config/config.js";
+import CartsMemDao from "./cartsMemDao.js";
+import CartsFileDao from "./cartsFileDao.js";
+import CartsMongoDao from "./cartsMongoDao.js";
 
 class ProductsDaoFactory {
   static getProductsDao() {
@@ -9,7 +9,7 @@ class ProductsDaoFactory {
       case "file":
         return CartsFileDao.getInstance();
       case "mongo":
-      return CartsMongoDao.getInstance();
+        return CartsMongoDao.getInstance();
       default:
         return CartsMemDao.getInstance();
     }

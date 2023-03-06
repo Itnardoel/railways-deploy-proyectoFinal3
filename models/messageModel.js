@@ -10,7 +10,7 @@ class Message {
     this.email = messageDto.email;
     this.tipo = messageDto.tipo;
     this.fyh = messageDto.fyh;
-    this.mensaje = messageDto.mensaje
+    this.mensaje = messageDto.mensaje;
   }
 
   get id() {
@@ -36,9 +36,9 @@ class Message {
   set tipo(value) {
     this.#tipo = value;
     if (!this.#email) {
-        this.#tipo = "Sistema";
+      this.#tipo = "Sistema";
     } else {
-        this.#tipo = "Usuario";
+      this.#tipo = "Usuario";
     }
   }
 

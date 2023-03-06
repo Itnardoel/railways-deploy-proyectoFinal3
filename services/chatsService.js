@@ -1,6 +1,6 @@
-import ChatRepository from '../models/repositories/chatsRepository.js';
-import Message from '../models/messageModel.js';
-import MessageDto from '../models/dto/messagesDto.js';
+import ChatRepository from "../models/repositories/chatsRepository.js";
+import Message from "../models/messageModel.js";
+import MessageDto from "../models/dto/messagesDto.js";
 
 const repository = new ChatRepository();
 

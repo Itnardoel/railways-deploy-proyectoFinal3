@@ -3,8 +3,8 @@ import fs from "fs";
 
 import config from "../../config/config.js";
 import { NotFoundError } from "../errors/customError.js";
-import CartsDao from './cartsDao.js';
-import CartDto from '../dto/cartsDto.js';
+import CartsDao from "./cartsDao.js";
+import CartDto from "../dto/cartsDto.js";
 import ProductDto from "../dto/productsDto.js";
 
 let cartsInstance = null; // Singleton
@@ -47,17 +47,24 @@ class CartsFile extends CartsDao {
       throw new NotFoundError(`Cart with id ${id} not found`);
     }
 
-    const found = cartsDao[index].productos.find((o) => o.nombre == product.nombre);
-    const indexProd = cartsDao[index].productos.findIndex((o) => o.nombre == product.nombre);
+    const found = cartsDao[index].productos.find(
+      (o) => o.nombre == product.nombre
+    );
+    const indexProd = cartsDao[index].productos.findIndex(
+      (o) => o.nombre == product.nombre
+    );
 
     if (found) {
-      cartsDao[index].productos[indexProd] = { ...product, cantidad: found.cantidad + 1}
+      cartsDao[index].productos[indexProd] = {
+        ...product,
+        cantidad: found.cantidad + 1,
+      };
       await write(this.pathFile, cartsDao);
       return new CartDto(cartsDao[index]);
     }
 
-    cartsDao[index].productos.push({...product, cantidad: 1});
-  
+    cartsDao[index].productos.push({ ...product, cantidad: 1 });
+
     await write(this.pathFile, cartsDao);
     return new CartDto(cartsDao[index]);
   }
@@ -69,7 +76,7 @@ class CartsFile extends CartsDao {
       throw new NotFoundError(`Cart with id ${id} not found`);
     }
     const cartDeleted = cartsDao.splice(index, 1)[0];
-    
+
     await write(this.pathFile, cartsDao);
     return new CartDto(cartDeleted);
   }
@@ -80,13 +87,15 @@ class CartsFile extends CartsDao {
     if (index == -1) {
       throw new NotFoundError(`Cart with id ${id} not found`);
     }
-    const indexProd = cartsDao[index].productos.findIndex((o) => o.id == id_prod);
+    const indexProd = cartsDao[index].productos.findIndex(
+      (o) => o.id == id_prod
+    );
     if (indexProd == -1) {
-        throw new NotFoundError(`Product with id ${id_prod} in cart not found`);
+      throw new NotFoundError(`Product with id ${id_prod} in cart not found`);
     }
 
     const productDeleted = cartsDao[index].productos.splice(indexProd, 1)[0];
-    
+
     await write(this.pathFile, cartsDao);
     return new ProductDto(productDeleted);
   }

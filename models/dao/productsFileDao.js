@@ -77,7 +77,7 @@ class ProductsFile extends ProductsDao {
       throw new NotFoundError(`Person with id ${id} not found`);
     }
     const productDeleted = productsDao.splice(index, 1)[0];
-    
+
     await write(this.pathFile, productsDao);
     return new ProductDto(productDeleted);
   }

@@ -13,8 +13,8 @@ class Product {
     this.nombre = productDto.nombre;
     this.foto = productDto.foto;
     this.precio = productDto.precio;
-    this.descripcion = productDto.descripcion
-    this.categoria = productDto.categoria
+    this.descripcion = productDto.descripcion;
+    this.categoria = productDto.categoria;
   }
 
   get id() {
@@ -39,10 +39,10 @@ class Product {
   }
 
   set precio(value) {
-    if (value == 0) throw new BadRequestError('Precio debe ser mayor a 0');
-    if (!value) throw new BadRequestError('Precio es un campo requerido');
-    if (isNaN(value)) throw new BadRequestError('Precio debe ser numérico');
-    if (value < 0) throw new BadRequestError('Precio debe ser positivo');
+    if (value == 0) throw new BadRequestError("Precio debe ser mayor a 0");
+    if (!value) throw new BadRequestError("Precio es un campo requerido");
+    if (isNaN(value)) throw new BadRequestError("Precio debe ser numérico");
+    if (value < 0) throw new BadRequestError("Precio debe ser positivo");
     this.#precio = value;
   }
 
@@ -51,7 +51,7 @@ class Product {
   }
 
   set foto(value) {
-    if (!value) throw new BadRequestError('Foto es un campo requerido');
+    if (!value) throw new BadRequestError("Foto es un campo requerido");
     this.#foto = value;
   }
 
@@ -60,7 +60,7 @@ class Product {
   }
 
   set descripcion(value) {
-    if (!value) throw new BadRequestError('Descripcion es un campo requerido');
+    if (!value) throw new BadRequestError("Descripcion es un campo requerido");
     this.#descripcion = value;
   }
 

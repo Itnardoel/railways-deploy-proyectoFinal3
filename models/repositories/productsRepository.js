@@ -1,6 +1,6 @@
-import Product from '../productModel.js';
-import ProductDto from '../dto/productsDto.js';
-import ProductsDaoFactory from '../dao/productsDaoFactory.js';
+import Product from "../productModel.js";
+import ProductDto from "../dto/productsDto.js";
+import ProductsDaoFactory from "../dao/productsDaoFactory.js";
 
 class ProductRepository {
   constructor() {

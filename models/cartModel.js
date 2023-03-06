@@ -10,7 +10,7 @@ class Cart {
     this.email = cartDto.email;
     this.fyh = cartDto.fyh;
     this.productos = cartDto.productos;
-    this.direccion = cartDto.direccion
+    this.direccion = cartDto.direccion;
   }
 
   get id() {

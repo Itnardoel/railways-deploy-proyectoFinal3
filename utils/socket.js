@@ -1,62 +1,67 @@
-import { Server } from 'socket.io'
+import { Server } from "socket.io";
+import axios from "axios";
 
-import logger from './logger.js'
+import logger from "./logger.js";
 
 let io;
 
 let messages = [];
 
-(async function () {
-    try {
-        const response = await fetch('https://railways-deploy-proyectofinal3-production.up.railway.app/chat')
-        const historyMessages = await response.json();
-        
-        if (historyMessages.length == 0) {
-            return;
-        }
-        messages = historyMessages;
-    } catch (error) {
-        logger.error(error.message);
-    }
-})();
-
 function initSocket(httpServer) {
-    try {
-        io = new Server(httpServer);
-        setEvents(io); 
-    } catch (error) {
-        logger.error(error.message);
-    }
+  try {
+    io = new Server(httpServer);
+    setEvents(io);
+  } catch (error) {
+    logger.error(error.message);
+  }
 }
 
 function setEvents(io) {
-    io.on('connection', (socketClient) => {
-        logger.info('New client connected with id', socketClient.id);
+  io.on("connection", (socketClient) => {
+    logger.info("New client connected with id", socketClient.id);
 
-        socketClient.emit('history-messages', messages);
+    getAllMessages();
 
-        socketClient.on('new-message', (data) => {
-            messages.push(data);
-            saveNewMessage(data);
-            io.emit('notification', data);
-        })
+    socketClient.emit("history-messages", messages);
 
-        socketClient.on('disconnect', (socketClient) => {
-            logger.info('Client disconnected.');
-        })
-    })
+    socketClient.on("new-message", (data) => {
+      messages.push(data);
+      saveNewMessage(data);
+      io.emit("notification", data);
+    });
+
+    socketClient.on("disconnect", (socketClient) => {
+      logger.info("Client disconnected.");
+    });
+  });
 }
 
-async function saveNewMessage (data) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+async function getAllMessages() {
+  try {
+    const token = await axios.get("http://localhost:8080/token");
+    const response = await axios.get("http://localhost:8080/chat", {
+      headers: { Authorization: `Bearer ${token.data}` },
+    });
+    const historyMessages = await response.json();
+
+    if (historyMessages.length == 0) {
+      return;
     }
-
-    await fetch('https://railways-deploy-proyectofinal3-production.up.railway.app/chat', requestOptions );
+    messages = historyMessages;
+  } catch (error) {
+    logger.error(error.message);
+  }
 }
 
-export {
-    initSocket,
+async function saveNewMessage(data) {
+  try {
+    const token = await axios.get("http://localhost:8080/token");
+    await axios.post("http://localhost:8080/chat", data, {
+      headers: { Authorization: `Bearer ${token.data}` },
+    });
+  } catch (error) {
+    logger.error(error.message);
+  }
 }
+
+export { initSocket };

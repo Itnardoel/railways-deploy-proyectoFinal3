@@ -1,8 +1,8 @@
-import CartRepository from '../models/repositories/cartsRepository.js';
-import Carrito from '../models/cartModel.js';
-import CarritoDto from '../models/dto/cartsDto.js';
-import Product from '../models/productModel.js';
-import ProductDto from '../models/dto/productsDto.js';
+import CartRepository from "../models/repositories/cartsRepository.js";
+import Carrito from "../models/cartModel.js";
+import CarritoDto from "../models/dto/cartsDto.js";
+import Product from "../models/productModel.js";
+import ProductDto from "../models/dto/productsDto.js";
 
 const repository = new CartRepository();
 
@@ -27,9 +27,9 @@ export async function deleteById(id) {
 }
 
 export async function deleteProductById(id, id_prod) {
-    const product = await repository.deleteProductById(id, id_prod);
-    return new ProductDto(product);
-  }
+  const product = await repository.deleteProductById(id, id_prod);
+  return new ProductDto(product);
+}
 
 export default {
   create,

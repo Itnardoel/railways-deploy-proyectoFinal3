@@ -1,8 +1,8 @@
-import { v4 as uuid4 } from 'uuid';
+import { v4 as uuid4 } from "uuid";
 
-import MessagesDao from './messagesDao.js';
-import MessageDto from '../dto/messagesDto.js';
-import { NotFoundError } from '../errors/customError.js';
+import MessagesDao from "./messagesDao.js";
+import MessageDto from "../dto/messagesDto.js";
+import { NotFoundError } from "../errors/customError.js";
 
 let messagesInstance = null; // Singleton
 

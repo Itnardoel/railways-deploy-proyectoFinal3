@@ -1,8 +1,8 @@
-import { v4 as uuid4 } from 'uuid';
+import { v4 as uuid4 } from "uuid";
 
-import ProductsDao from './productsDao.js';
-import ProductDto from '../dto/productsDto.js';
-import { NotFoundError } from '../errors/customError.js';
+import ProductsDao from "./productsDao.js";
+import ProductDto from "../dto/productsDto.js";
+import { NotFoundError } from "../errors/customError.js";
 
 let productsInstance = null; // Singleton
 
